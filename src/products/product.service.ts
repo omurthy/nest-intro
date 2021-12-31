@@ -3,6 +3,7 @@ import { Product } from "./product.model";
 
 @Injectable()
 export class ProductService {
+
     products: Product[] = [];
 
     insertProduct(title: string, desc: string, price: number): any {
@@ -42,5 +43,11 @@ export class ProductService {
             throw new NotFoundException("Product not found !");
         }
         return [product, productIndex];
+    }
+
+    deleteProduct(prodId: string) {
+        const index = this.findProduct(prodId)[1];
+        this.products.splice(index, 1);
+        return null;
     }
 }
