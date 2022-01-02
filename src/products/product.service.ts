@@ -14,9 +14,9 @@ export class ProductService {
         //const prodId = Math.floor(100000 + Math.random() * 900000).toString();
         const newProduct = new this.productModel({ title: title, description: desc, price: price });
         const result = await newProduct.save();
-        console.log(result);
+        //console.log(result);
 
-        return "prodId";
+        return result.id;
     }
 
     getAllProducts() {
