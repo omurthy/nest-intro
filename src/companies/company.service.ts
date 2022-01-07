@@ -48,6 +48,7 @@ export class CompanyService {
     }
     async deleteCompany(companyId: string) {
         const result = await this.companyModel.deleteOne({ id: companyId }).exec();
+        console.log(result);
     }
 
     async findCompany(companyId: string): Promise<Company> {

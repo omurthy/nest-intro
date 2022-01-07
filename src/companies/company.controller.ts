@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
 import { CompanyService } from "./company.service";
 
 @Controller('companies')
@@ -18,4 +18,29 @@ export class CompanyController {
         const companies = await this.companyService.getAllCompanies();
         return companies;
     }
+
+    @Get(":id")
+    async getCompany(@Param("id") companyId: string) {
+        const company = await this.companyService.getSingleCompany(companyId);
+        return company;
+    }
+
+    @Patch(":id")
+    async updateCompany(@Param("id") companyId: string,
+        @Body("name") companyName: string,
+        @Body("phone") companyPhone: number,
+        @Body("address") companyAddress: string,
+        @Body("email") companyEmail: string) {
+
+        await this.companyService.updateCompany(companyId, companyName, companyPhone, companyAddress, companyEmail);
+        return null;
+    }
+
+    @Delete(":id")
+    async deleteCompany(@Param("id") companyId: string) {
+        await this.companyService.deleteCompany(companyId);
+        return null;
+    }
+
+
 }
