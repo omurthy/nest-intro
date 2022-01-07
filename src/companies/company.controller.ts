@@ -8,8 +8,8 @@ export class CompanyController {
 
 
     @Post()
-    addCompany(@Body("name") compName: String, @Body("phone") compPhone: String, @Body("address") compAddress: String, @Body("email") compEmail: String) {
-        const generatedId = this.companyService.insertCompany(compName, compPhone, compAddress, compEmail);
+    async addCompany(@Body("name") compName: String, @Body("phone") compPhone: String, @Body("address") compAddress: String, @Body("email") compEmail: String) {
+        const generatedId = await this.companyService.insertCompany(compName, compPhone, compAddress, compEmail);
         return { id: generatedId };
     }
 
