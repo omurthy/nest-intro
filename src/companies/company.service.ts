@@ -18,4 +18,10 @@ export class CompanyService {
             email: company.email
         }));
     }
+
+    async insertCompany(name, phone, address, email) {
+        const company = new this.companyModel({ name: name, phone: phone, address: address, email: email });
+        await company.save();
+        return company.id as string;
+    }
 }
