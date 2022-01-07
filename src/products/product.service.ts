@@ -61,7 +61,7 @@ export class ProductService {
     }
 
     async deleteProduct(prodId: string) {
-        const result = await this.productModel.deleteOne({ _id: prodId }).exec();
+        const result = await this.productModel.deleteOne({ id: prodId }).exec();
         console.log(result);
     }
 }
