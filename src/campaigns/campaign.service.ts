@@ -7,7 +7,7 @@ import { Campaign } from "./campaign.model";
 export class CampaignService {
     constructor(@InjectModel('Campaign') private readonly campaignModel: Model<Campaign>) { }
 
-    async insertCampaign(campaignId: string, campaignName: string, discount: number, startDate: Date, endDate: Date) {
+    async insertCampaign(campaignName: string, discount: number, startDate: Date, endDate: Date) {
         const newCampaign = new this.campaignModel({ name: campaignName, discount: discount, startDate: startDate, endDate: endDate });
         const result = await newCampaign.save();
 
@@ -37,13 +37,17 @@ export class CampaignService {
         return campaigns.map(campaign => ({ id: campaign.id, name: campaign.name, discount: campaign.discount, startDate: campaign.startDate, endDate: campaign.endDate }));
     }
 
-    getSingleCampaign(campaignId: string) {
-        const result = this.findCampaign(campaignId);
+    async getSingleCampaign(campaignId: string) {
+        const campaign = await this.findCampaign(campaignId);
+        return { id: campaign.id, name: campaign.name, discount: campaign.discount, startDate: campaign.startDate, endDate: campaign.endDate };
     }
 
 
-    deleteCompaign(campaignId: string) {
-        const result = this.campaignModel.deleteOne({ _id: campaignId });
+    async deleteCampaign(campaignId: string) {
+        const result = await this.campaignModel.deleteOne({ _id: campaignId });
+        if (result.deletedCount === 0) {
+            throw new NotFoundException("Campaign Not Found!");
+        }
     }
 
     async findCampaign(campaignId: string) {
