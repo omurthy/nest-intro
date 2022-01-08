@@ -45,7 +45,7 @@ export class CustomerController {
 
     @Delete(":id")
     async removeCustomer(@Param('id') customerId: string) {
-        const customer = await this.customerService.deleteCustomer(customerId);
+        await this.customerService.deleteCustomer(customerId);
         return null;
     }
 

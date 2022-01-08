@@ -54,7 +54,7 @@ export class CustomerService {
     async findCustomer(customerId: string) {
         let customer;
         try {
-            customer = await this.customerModel.findById(customerId);
+            customer = await this.customerModel.findById(customerId).exec();
         } catch (error) {
             throw new NotFoundException("Error :Customer not found !");
         }
@@ -64,7 +64,10 @@ export class CustomerService {
         return customer;
     }
     async deleteCustomer(customerId: string) {
-        const result = await this.customerModel.deleteOne({ id: customerId }).exec();
+        const result = await this.customerModel.deleteOne({ _id: customerId }).exec();
         console.log(result);
+        if (result.deletedCount === 0) {
+            throw new NotFoundException("Can not find this Customer.");
+        }
     }
 }
