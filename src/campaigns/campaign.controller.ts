@@ -1,8 +1,8 @@
 import { Controller } from "@nestjs/common";
-import { CustomerService } from "src/customers/customer.service";
+import { CampaignService } from "./campaign.service";
 
-@Controller()
+@Controller("campaigns")
 export class CampaignController {
-    constructor(private readonly customerService: CustomerService) { }
+    constructor(private readonly campaignService: CampaignService) { }
 
 }
