@@ -56,7 +56,7 @@ export class CampaignService {
         try {
             campaign = await this.campaignModel.findById(campaignId);
         } catch (error) {
-            throw new NotFoundException("Error : Campaign Not Found!")
+            throw new NotFoundException("Error ! : Campaign Not Found!")
         }
         if (!campaign) {
             throw new NotFoundException("Campaign Not Found!")

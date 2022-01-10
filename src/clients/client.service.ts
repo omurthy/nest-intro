@@ -49,7 +49,7 @@ export class ClientService {
         try {
             client = await this.clientModel.findById(clientId);
         } catch (error) {
-            throw new NotFoundException("Error :Client Not found!");
+            throw new NotFoundException("Error ! :Client Not found!");
         }
         if (!client) {
             throw new NotFoundException("Client not found");

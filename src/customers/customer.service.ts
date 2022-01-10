@@ -56,7 +56,7 @@ export class CustomerService {
         try {
             customer = await this.customerModel.findById(customerId).exec();
         } catch (error) {
-            throw new NotFoundException("Error :Customer not found !");
+            throw new NotFoundException("Error ! :Customer not found !");
         }
         if (!customer) {
             throw new NotFoundException("Customer cant found");

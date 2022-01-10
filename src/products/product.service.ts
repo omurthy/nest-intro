@@ -51,7 +51,7 @@ export class ProductService {
         try {
             product = await this.productModel.findById(id);
         } catch (error) {
-            throw new NotFoundException("Product not found !");
+            throw new NotFoundException("Error ! : Product not found !");
         }
 
         if (!product) {
