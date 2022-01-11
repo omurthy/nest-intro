@@ -9,9 +9,9 @@ export class CampaignService {
 
     async insertCampaign(campaignName: string, discount: number, startDate: Date, endDate: Date) {
         const newCampaign = new this.campaignModel({ name: campaignName, discount: discount, startDate: startDate, endDate: endDate });
-        const result = await newCampaign.save();
+        const results = await newCampaign.save();
 
-        return result.id as string;
+        return results.id as string;
     }
 
     async updateCampaign(campaignId: string, campaignName: string, discount: number, startDate: Date, endDate: Date) {
