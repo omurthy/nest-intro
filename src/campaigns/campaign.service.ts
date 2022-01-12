@@ -46,7 +46,7 @@ export class CampaignService {
     async deleteCampaign(campaignId: string) {
         const result = await this.campaignModel.deleteOne({ _id: campaignId });
         if (result.deletedCount === 0) {
-            throw new NotFoundException("Campaign Not Found!");
+            throw new NotFoundException("Campaign Can Not Found!");
         }
     }
 
