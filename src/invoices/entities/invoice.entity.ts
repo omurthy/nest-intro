@@ -1,16 +1,20 @@
 import * as mongoose from 'mongoose';
 
-export const invoiceSchema = new mongoose.Model({
-    id: { type: String, required: true },
-    name: { type: String, required: true },
+export const InvoiceSchema = new mongoose.Model({
+    productName: { type: String, required: true },
     price: { type: Number, required: true },
+    customerId: { type: String, required: true },
+    customerName: { type: String, required: true },
     lastPayingDate: { type: Date, required: true }
 });
 export class Invoice extends mongoose.Document {
 
     id: string;
-    name: string;
+    productName: string;
     price: number;
+    customerId: string;
+    customerName: string;
+    discount: string;
     lastPayingDate: Date;
 
 }
