@@ -7,7 +7,7 @@ import { ClientModule } from './clients/client.module';
 import { CompanyModule } from './companies/company.module';
 import { CustomerModule } from './customers/customer.module';
 import { ProductModule } from './products/product.module';
-import { InvoicesModule } from './invoices/invoices.module';
+import { InvoiceModule } from './invoices/invoice.module';
 
 @Module({
   imports: [
@@ -17,7 +17,7 @@ import { InvoicesModule } from './invoices/invoices.module';
     ClientModule,
     CampaignModule,
     MongooseModule.forRoot('mongodb+srv://omur:12345@cluster0.lsyel.mongodb.net/nestjsDB?retryWrites=true&w=majority'),
-    InvoicesModule],
+    InvoiceModule],
   controllers: [AppController],
   providers: [AppService],
 })
