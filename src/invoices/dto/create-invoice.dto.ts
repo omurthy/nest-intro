@@ -8,6 +8,7 @@ export const InvoiceSchema = new mongoose.Schema({
     discount: { type: Number, required: true },
 });
 export class CreateInvoiceDto extends mongoose.Document {
+    id: string;
     productName: string;
     price: number;
     customerId: string;
