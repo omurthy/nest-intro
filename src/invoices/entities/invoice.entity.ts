@@ -5,7 +5,7 @@ export const InvoiceSchema = new mongoose.Model({
     price: { type: Number, required: true },
     customerId: { type: String, required: true },
     customerName: { type: String, required: true },
-    lastPayingDate: { type: Date, required: true }
+    lastPayingDate: { type: Date, required: true },
     kuponCode: { type: String, required: true }
 });
 export class Invoice extends mongoose.Document {
