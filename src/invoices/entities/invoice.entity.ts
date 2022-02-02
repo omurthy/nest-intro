@@ -9,7 +9,8 @@ export const InvoiceSchema = new mongoose.Model({
     kuponCode: { type: String, required: true },
     serialNumber: { type: String, required: true },
     phoneNumber: { type: String, required: true },
-    einNumber: { type: String, required: true }
+    einNumber: { type: String, required: true },
+    defCode: { type: String, required: true }
 });
 export class Invoice extends mongoose.Document {
 
@@ -24,4 +25,5 @@ export class Invoice extends mongoose.Document {
     serialNumber: string;
     phoneNumber: string;
     einNumber: string;
+    defCode: string;
 }
